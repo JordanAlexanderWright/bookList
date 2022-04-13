@@ -1,0 +1,20 @@
+#collection{
+    display: inline-block;
+    color:red;
+}
+
+    #collectionTitles{
+        display: inherit;
+    }
+
+    #collectionAuthors{
+        display: inherit;
+    }
+
+    #collectionISBN {
+        display: inherit;
+    }
+
+#submitButton {
+    color: red;
+}
