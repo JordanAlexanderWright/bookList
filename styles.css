@@ -1,7 +1,10 @@
 .card {
-    margin-left: 10%;
-    margin-right: 10%;
-    border-style: inset;
+    margin-left: 25%;
+    margin-right: 25%;
+    border-style: outset;
+    border-width: 2px;
+    box-shadow: 2px 2px grey;
+    overflow: hidden;
 }
 /* 
 #addBook{
@@ -15,7 +18,10 @@
 .wrapper {
     display: grid;
     grid-template-columns: 25% 25% 25% 25%; 
-    grid-auto-rows: 30px;
+    grid-auto-rows: 25px;
+    text-align: center;
+    justify-content: center;
+    height: 100%;
   }
 
     .one {
@@ -23,36 +29,40 @@
         grid-column-end: 5;
         grid-row-start: 1;
         grid-row-end: 2;
-        background-color:red;
+        /* background-color:red; */
+        
     }
 
     .two {
         grid-column-start: 1;
         grid-column-end: 3;
         grid-row-start: 2;
-        grid-row-end: 4;
-        background-color:blue;
+        grid-row-end: 3;
+        /* background-color:blue; */
     }
 
     .three {
         grid-column-start: 3;
         grid-column-end: 5;
         grid-row-start: 2;
-        grid-row-end: 4;
-        background-color:green;
+        grid-row-end: 3;
+        /* background-color:green; */
     }
 
     .four {
         grid-column-start: 1;
-        grid-column-end: 4;
-        grid-row-start: 4;
-        grid-row-end: 5;
-        background-color: purple;
+        grid-column-end: 5;
+        grid-row-start: 3;
+        grid-row-end: 4;
+        /* background-color: purple; */
     }
 
+    #submitButton{
+        width: 100%;
+    }
     #isbnField {
         grid-column-start: 2;
-        grid-row-start: 2/2;
+        grid-row-start: 2;
 
     }
 
@@ -65,25 +75,38 @@
     }
 
 #collection{
-    display: inline-block;
     color:black;
+    display: grid;
 }
 
     #collection label{
-        color:red;
+        color:black;
         margin: 10%;
     }
 
-    #collectionTitles{
-        display: inherit;
+    .five{
+        grid-column-start: 1;
+        grid-column-end: 2;
+        grid-row-start: 1;
+        grid-row-end: auto;
+        /* background-color: red; */
     }
 
-    #collectionAuthors{
-        display: inherit;
+    .six{
+        grid-column-start: 3;
+        grid-column-end: 4;
+        grid-row-start: 1;
+        grid-row-end: auto;
+        /* background-color: blue; */
+
     }
 
-    #collectionISBN {
-        display: inherit;
+    .seven{
+        grid-column-start: 2;
+        grid-column-end: 3;
+        grid-row-start: 1;
+        grid-row-end: auto;
+        /* background-color: green; */
     }
 
 #submitButton {

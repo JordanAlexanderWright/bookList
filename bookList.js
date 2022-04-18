@@ -99,8 +99,6 @@ function getData(){
 
 function deleteBook(e){
     e.preventDefault();
-
-    console.log('hello')
     bookTitle = deleteField.value;
     console.log(bookTitle);
     localStorage.removeItem(bookTitle);
