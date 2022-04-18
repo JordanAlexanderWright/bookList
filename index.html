@@ -9,26 +9,32 @@
 </head>
 <body>
     <div class="card">
-        <form id='addBook' action="">
 
-            <div>
-                <label for="nameField">Book Name</label>
-                <input type="text" id="nameField">
-            </div>
+            <form id='addBook' action="">
+                <div class="wrapper">
+                    
+                    <div class="one">
+                        <label for="nameField">Book Name</label>
+                        <input type="text" id="nameField">
+                    </div>
 
-            <div>              
-                <label for="authorField">Author</label>
-                <input type="text" id="authorField">
-            </div>
+                    <div class="two">              
+                        <label for="authorField">Author</label>
+                        <input type="text" id="authorField">
+                    </div>
 
-            <div>
-                <label for="isbnField">ISBN</label>
-                <input type="text" id="isbnField">
-            </div>
+                    <div class="three">
+                        <label for="isbnField">ISBN</label>
+                        <input type="text" id="isbnField">
+                    </div>
 
-            <input type="button" value="Submit" id="submitButton">  
+                    <div class="four">
+                        <input type="button" value="Submit" id="submitButton">  
+                    </div>
+                    
+                </div>
+            </form>
 
-        </form>
 
         <hr>
 
@@ -52,9 +58,9 @@
         </div>
 
         <div class="deleteStuff">
-                <input type="text" value="" id="deleteField">
-                <input type="button" value="Delete" id="delete">
-
+            <input type="text" value="" id="deleteField">
+            <input type="button" value="Delete" id="delete"> <br>
+            <label for="#delete" id="deleteLabel">Input a book title to delete</label>
         </div>
 
     </div>

@@ -1,26 +1,78 @@
 .card {
     margin-left: 10%;
     margin-right: 10%;
+    border-style: inset;
 }
-
+/* 
 #addBook{
     display: grid;
-    grid-template-rows: max-content max-content;
+    grid-template-columns: repeat(3, 1fr); */
+    /* grid-template-rows: max-content max-content; */
+    /* grid-auto-rows: 100px;
     grid-gap: 5px;
-}
+} */
 
-#addBook label {
-    text-align:right;
-}
+.wrapper {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%; 
+    grid-auto-rows: 30px;
+  }
 
-#addBook label:after {
-    content: ":";
-}
+    .one {
+        grid-column-start: 1;
+        grid-column-end: 5;
+        grid-row-start: 1;
+        grid-row-end: 2;
+        background-color:red;
+    }
+
+    .two {
+        grid-column-start: 1;
+        grid-column-end: 3;
+        grid-row-start: 2;
+        grid-row-end: 4;
+        background-color:blue;
+    }
+
+    .three {
+        grid-column-start: 3;
+        grid-column-end: 5;
+        grid-row-start: 2;
+        grid-row-end: 4;
+        background-color:green;
+    }
+
+    .four {
+        grid-column-start: 1;
+        grid-column-end: 4;
+        grid-row-start: 4;
+        grid-row-end: 5;
+        background-color: purple;
+    }
+
+    #isbnField {
+        grid-column-start: 2;
+        grid-row-start: 2/2;
+
+    }
+
+    #addBook label {
+        text-align:right;
+    }
+
+    #addBook label::after {
+        content: ":";
+    }
 
 #collection{
     display: inline-block;
     color:black;
 }
+
+    #collection label{
+        color:red;
+        margin: 10%;
+    }
 
     #collectionTitles{
         display: inherit;
@@ -37,3 +89,24 @@
 #submitButton {
     color: black;
 }
+
+.deleteStuff{
+    color:red;
+}
+
+    #delete{
+        display: inline-block;
+    }
+    
+    #delete::after{
+        content:'\a';
+        white-space: pre;
+    }
+
+    #deleteLabel{
+        display: inline-block;
+    }
+
+    #deleteLabel::before{
+        content:'\a';
+    }
