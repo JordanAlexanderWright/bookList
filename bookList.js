@@ -3,9 +3,12 @@
 const nameField = document.querySelector('#nameField'),
     authorField = document.querySelector('#authorField'),
     isbnField = document.querySelector('#isbnField'),
-    submitBtn = document.querySelector('#submitButton');
+    submitBtn = document.querySelector('#submitButton'),
+    deleteField = document.querySelector('#deleteField'),
+    deleteBtn = document.querySelector('#delete');
 
 submitBtn.addEventListener('click', createBook);
+deleteBtn.addEventListener('click', deleteBook);
 
 // Selecting my collection elements
 
@@ -89,12 +92,20 @@ function getData(){
 
     bookArray.forEach((book) => {
         parsedBook = book.split(',');
-        newBook = new Book(parsedBook[0], parsedBook[1], parsedBook[2])
+        newBook = new Book(parsedBook[0], parsedBook[1], parsedBook[2]);
         displayBook(newBook);
     })
 }
-testBook = new Book('Way of Kings', 'Brandon Sanderson', '12345');
-testBook2 = new Book ('Hitchhikers Guide', 'Douglass Adams', '1234567');
+
+function deleteBook(e){
+    e.preventDefault();
+
+    console.log('hello')
+    bookTitle = deleteField.value;
+    console.log(bookTitle);
+    localStorage.removeItem(bookTitle);
+    location.reload();
+}
 
 
 getData();
