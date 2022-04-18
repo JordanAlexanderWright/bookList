@@ -1,4 +1,4 @@
-// Selecting my elements
+// Selecting my form elements
 
 const nameField = document.querySelector('#nameField'),
     authorField = document.querySelector('#authorField'),
@@ -6,6 +6,12 @@ const nameField = document.querySelector('#nameField'),
     submitBtn = document.querySelector('#submitButton');
 
 submitBtn.addEventListener('click', createBook);
+
+// Selecting my collection elements
+
+const collectionTitles = document.querySelector('#collectionTitles'),
+    collectionAuthors = document.querySelector('#collectionAuthors'),
+    collectionISBN = document.querySelector('#collectionISBN');
 
 // Making an array to hold the collection of books
 
@@ -33,4 +39,39 @@ function createBook(e){
     bookCollection.push(someBook);
 
     inputFields.forEach(field => field.value = '');
+
+    displayBook(someBook);
 }
+
+function displayBook(book){
+    
+    // title display
+
+    const listTitle = document.createElement('li');
+    const titleText = document.createTextNode(book.name);
+    listTitle.appendChild(titleText);
+
+    titleList = document.querySelector('#titleList');
+    titleList.appendChild(listTitle);
+
+    // Author display
+
+    const listAuthor = document.createElement('li');
+    const authorText = document.createTextNode(book.author);
+    listAuthor.appendChild(authorText);
+    
+    authorList = document.querySelector('#authorList');
+    authorList.appendChild(listAuthor);
+
+    // isbn Display
+
+    const isbn = document.createElement('li');
+    const isbnText = document.createTextNode(book.isbn);
+    isbn.appendChild(isbnText);
+
+    isbnList = document.querySelector('#isbnList');
+    isbnList.appendChild(isbn);
+}
+
+testBook = new Book('Way of Kings', 'Brandon Sanderson', '12345');
+displayBook(testBook);

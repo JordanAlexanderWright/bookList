@@ -1,6 +1,25 @@
+.card {
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+#addBook{
+    display: grid;
+    grid-template-rows: max-content max-content;
+    grid-gap: 5px;
+}
+
+#addBook label {
+    text-align:right;
+}
+
+#addBook label:after {
+    content: ":";
+}
+
 #collection{
     display: inline-block;
-    color:red;
+    color:black;
 }
 
     #collectionTitles{
@@ -16,5 +35,5 @@
     }
 
 #submitButton {
-    color: red;
+    color: black;
 }
