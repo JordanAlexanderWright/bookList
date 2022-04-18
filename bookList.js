@@ -36,10 +36,10 @@ function createBook(e){
     isbn = isbnField.value;
     
     let someBook = new Book(name, author, isbn);
-    bookCollection.push(someBook);
 
     inputFields.forEach(field => field.value = '');
 
+    saveData(someBook);
     displayBook(someBook);
 }
 
@@ -73,5 +73,29 @@ function displayBook(book){
     isbnList.appendChild(isbn);
 }
 
+function saveData(someBook){
+    title = someBook.name;
+    author = someBook.author;
+    isbn = someBook.isbn;
+
+    forStorage = `${title},${author},${isbn}`;
+
+    localStorage.setItem(title, forStorage);
+}
+
+function getData(){
+    
+    bookArray = Object.values(localStorage);
+
+    bookArray.forEach((book) => {
+        parsedBook = book.split(',');
+        newBook = new Book(parsedBook[0], parsedBook[1], parsedBook[2])
+        displayBook(newBook);
+    })
+}
 testBook = new Book('Way of Kings', 'Brandon Sanderson', '12345');
-displayBook(testBook);
+testBook2 = new Book ('Hitchhikers Guide', 'Douglass Adams', '1234567');
+
+
+getData();
+
