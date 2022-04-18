@@ -5,6 +5,8 @@
     border-width: 2px;
     box-shadow: 2px 2px grey;
     overflow: hidden;
+    min-width: 500px;
+    max-width: 750px;
 }
 /* 
 #addBook{
@@ -80,8 +82,10 @@
 }
 
     #collection label{
-        color:black;
-        margin: 10%;
+        color:maroon;
+        margin: 25%;
+        text-decoration: underline;
+
     }
 
     .five{
@@ -114,7 +118,6 @@
 }
 
 .deleteStuff{
-    color:red;
 }
 
     #delete{
@@ -128,6 +131,8 @@
 
     #deleteLabel{
         display: inline-block;
+        font-size: 12px !important;
+        color:red;
     }
 
     #deleteLabel::before{
