@@ -1,12 +1,18 @@
+.body {
+    margin:0;
+    padding:0;
+}
+
 .card {
-    margin-left: 25%;
-    margin-right: 25%;
+    margin-top:10px;
+    
     border-style: outset;
     border-width: 2px;
     box-shadow: 2px 2px grey;
     overflow: hidden;
     min-width: 500px;
     max-width: 750px;
+    
 }
 /* 
 #addBook{
@@ -113,28 +119,8 @@
         /* background-color: green; */
     }
 
-#submitButton {
+.deleteStuff {
+    margin-bottom: 5px;
     color: black;
+    display: inline-block;
 }
-
-.deleteStuff{
-}
-
-    #delete{
-        display: inline-block;
-    }
-    
-    #delete::after{
-        content:'\a';
-        white-space: pre;
-    }
-
-    #deleteLabel{
-        display: inline-block;
-        font-size: 12px !important;
-        color:red;
-    }
-
-    #deleteLabel::before{
-        content:'\a';
-    }

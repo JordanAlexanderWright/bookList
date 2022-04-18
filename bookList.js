@@ -5,10 +5,13 @@ const nameField = document.querySelector('#nameField'),
     isbnField = document.querySelector('#isbnField'),
     submitBtn = document.querySelector('#submitButton'),
     deleteField = document.querySelector('#deleteField'),
-    deleteBtn = document.querySelector('#delete');
+    deleteBtn = document.querySelector('#delete'),
+    cardSelect = document.querySelector('.card');
 
 submitBtn.addEventListener('click', createBook);
 deleteBtn.addEventListener('click', deleteBook);
+deleteField.addEventListener('click', clearField);
+window.addEventListener('resize', pageDimensions);
 
 // Selecting my collection elements
 
@@ -29,6 +32,10 @@ class Book {
         this.author = author;
         this.isbn = isbn;
     }
+}
+
+function clearField(e){
+    this.value = ''
 }
 
 function createBook(e){
@@ -105,6 +112,19 @@ function deleteBook(e){
     location.reload();
 }
 
+function pageDimensions(e){
+
+    width = document.documentElement.clientWidth
+    height = document.documentElement.clientHeight
+
+    cardWidth = cardSelect.offsetWidth
+    remaining = width - cardWidth
+    margin = remaining/2;
+    console.log(margin);
+    cardSelect.style.marginLeft = `${margin}px`
+    cardSelect.style.marginRight = `${margin}px`;
+
+}
 
 getData();
-
+pageDimensions();
