@@ -44,13 +44,24 @@ function createBook(e){
     name = nameField.value;
     author = authorField.value;
     isbn = isbnField.value;
+
+    console.log(name);
+    console.log(typeof(author));
+    console.log(isbn);
+
+    console.log(author === '');
+
+    if(isbn === '' || author === '' || name === ''){
+        console.log('Check input fields.')
+    } else {
+        let someBook = new Book(name, author, isbn);
+
+        inputFields.forEach(field => field.value = '');
     
-    let someBook = new Book(name, author, isbn);
+        saveData(someBook);
+        displayBook(someBook);  
+    }
 
-    inputFields.forEach(field => field.value = '');
-
-    saveData(someBook);
-    displayBook(someBook);
 }
 
 function displayBook(book){
@@ -99,8 +110,12 @@ function getData(){
 
     bookArray.forEach((book) => {
         parsedBook = book.split(',');
-        newBook = new Book(parsedBook[0], parsedBook[1], parsedBook[2]);
+        if(parsedBook[0] === undefined || parsedBook[1] === undefined|| parsedBook[2] === undefined){
+    
+        } else {
+            newBook = new Book(parsedBook[0], parsedBook[1], parsedBook[2]);
         displayBook(newBook);
+        }
     })
 }
 
