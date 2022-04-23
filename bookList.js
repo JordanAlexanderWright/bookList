@@ -45,12 +45,6 @@ function createBook(e){
     author = authorField.value;
     isbn = isbnField.value;
 
-    console.log(name);
-    console.log(typeof(author));
-    console.log(isbn);
-
-    console.log(author === '');
-
     if(isbn === '' || author === '' || name === ''){
         console.log('Check input fields.')
     } else {
@@ -64,12 +58,28 @@ function createBook(e){
 
 }
 
+function testFunc(e){
+    console.log('hello');
+    parentText = e.target.parentElement.textContent;
+    parsedText = parentText.split('Delete');
+    console.log(parsedText[1]);
+    newDeleteBook(parsedText[1]);
+    
+}
+
 function displayBook(book){
     
     // title display
 
-    const listTitle = document.createElement('li');
-    const titleText = document.createTextNode(book.name);
+    const listTitle = document.createElement('li'),
+        titleText = document.createTextNode(book.name),
+        deleteBtn = document.createElement('a');
+
+    listTitle.append(deleteBtn);
+    deleteBtn.innerHTML = 'Delete';
+    deleteBtn.href = '#'
+    deleteBtn.addEventListener('click', testFunc);
+
     listTitle.appendChild(titleText);
 
     titleList = document.querySelector('#titleList');
@@ -119,6 +129,11 @@ function getData(){
     })
 }
 
+function newDeleteBook(bookTitle){
+    localStorage.removeItem(bookTitle);
+    location.reload();
+}
+
 function deleteBook(e){
     e.preventDefault();
     bookTitle = deleteField.value;
@@ -135,7 +150,6 @@ function pageDimensions(e){
     cardWidth = cardSelect.offsetWidth
     remaining = width - cardWidth
     margin = remaining/2;
-    console.log(margin);
     cardSelect.style.marginLeft = `${margin}px`
     cardSelect.style.marginRight = `${margin}px`;
 
