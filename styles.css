@@ -65,6 +65,7 @@
         /* background-color: purple; */
     }
 
+
     #submitButton{
         width: 100%;
     }
@@ -85,6 +86,8 @@
 #collection{
     color:black;
     display: grid;
+    overflow: hidden;
+    position: relative;
 }
 
     #collection label{
@@ -119,8 +122,31 @@
         /* background-color: green; */
     }
 
-.deleteStuff {
+    #DELETE{
+        color:red;
+        grid-column-start: 4;
+        grid-column-end: 5;
+        /* justify-content: right; */
+        display: block;
+        position: relative;
+    }
+        
+    #deleteBtns{
+        color:red;
+        grid-column-start: 4;
+        grid-column-end: 5;
+        grid-row-start: 1;
+        grid-row-end: auto;
+        /* background-color:blue; */
+        /* justify-content: center; */
+        text-align: center;
+        padding-top: 35px;
+       
+    }
+
+/* .deleteStuff {
     margin-bottom: 5px;
     color: black;
     display: inline-block;
-}
+} */
+

@@ -5,19 +5,20 @@ const nameField = document.querySelector('#nameField'),
     isbnField = document.querySelector('#isbnField'),
     submitBtn = document.querySelector('#submitButton'),
     deleteField = document.querySelector('#deleteField'),
-    deleteBtn = document.querySelector('#delete'),
+    deleteBtns = document.querySelector('#delete'),
     cardSelect = document.querySelector('.card');
 
 submitBtn.addEventListener('click', createBook);
-deleteBtn.addEventListener('click', deleteBook);
-deleteField.addEventListener('click', clearField);
+// deleteBtns.addEventListener('click', deleteBook);
+// deleteField.addEventListener('click', clearField);
 window.addEventListener('resize', pageDimensions);
 
 // Selecting my collection elements
 
 const collectionTitles = document.querySelector('#collectionTitles'),
     collectionAuthors = document.querySelector('#collectionAuthors'),
-    collectionISBN = document.querySelector('#collectionISBN');
+    collectionISBN = document.querySelector('#collectionISBN'),
+    deleteCollection = document.querySelector('#deleteBtns');
 
 // Making an array to hold the collection of books
 
@@ -68,22 +69,24 @@ function testFunc(e){
 }
 
 function displayBook(book){
-    
-    // title display
 
     const listTitle = document.createElement('li'),
         titleText = document.createTextNode(book.name),
         deleteBtn = document.createElement('a');
 
-    listTitle.append(deleteBtn);
-    deleteBtn.innerHTML = 'Delete';
-    deleteBtn.href = '#'
-    deleteBtn.addEventListener('click', testFunc);
-
+    // title display
     listTitle.appendChild(titleText);
-
     titleList = document.querySelector('#titleList');
     titleList.appendChild(listTitle);
+
+    // Delete Icon creation
+    deleteBtn.innerHTML = '<i class="fa-solid fa-trash-can"></i>';
+    deleteBtn.href = '#';
+    deleteBtn.id = 'DELETE';
+    deleteBtn.dataValue = book.name;
+    deleteBtn.addEventListener('click', deleteBook);
+
+    deleteCollection.appendChild(deleteBtn);
 
     // Author display
 
@@ -136,8 +139,7 @@ function newDeleteBook(bookTitle){
 
 function deleteBook(e){
     e.preventDefault();
-    bookTitle = deleteField.value;
-    console.log(bookTitle);
+    bookTitle = e.target.parentElement.dataValue;
     localStorage.removeItem(bookTitle);
     location.reload();
 }
