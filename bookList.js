@@ -14,17 +14,9 @@ window.addEventListener('resize', pageDimensions);
 
 // Selecting my collection elements
 
-const collectionTitles = document.querySelector('#collectionTitles'),
-    collectionAuthors = document.querySelector('#collectionAuthors'),
-    collectionISBN = document.querySelector('#collectionISBN'),
+const isbnList = document.querySelector('#isbnList'),
+    authorList = document.querySelector('#authorList'),
     deleteCollection = document.querySelector('#deleteBtns');
-
-// Making an array to hold the collection of books
-
-let bookCollection = [];
-
-// Making an array of the fields to automate over
-let inputFields = [nameField, authorField, isbnField];
 
 class Book {
     constructor(name, author, isbn){
@@ -48,29 +40,25 @@ function createBook(e){
     } else {
         let someBook = new Book(name, author, isbn);
 
+        let inputFields = [nameField, authorField, isbnField];
         inputFields.forEach(field => field.value = '');
     
         saveData(someBook);
         displayBook(someBook);  
         showAlert('success');
     }
-
-}
-
-function testFunc(e){
-    console.log('hello');
-    parentText = e.target.parentElement.textContent;
-    parsedText = parentText.split('Delete');
-    console.log(parsedText[1]);
-    newDeleteBook(parsedText[1]);
-    
 }
 
 function displayBook(book){
 
+    // Creating all the elements
     const listTitle = document.createElement('li'),
         titleText = document.createTextNode(book.name),
-        deleteBtn = document.createElement('a');
+        deleteBtn = document.createElement('a'),
+        listAuthor = document.createElement('li'),
+        authorText = document.createTextNode(book.author),
+        isbn = document.createElement('li'),
+        isbnText = document.createTextNode(book.isbn);
 
     // title display
     listTitle.appendChild(titleText);
@@ -88,20 +76,12 @@ function displayBook(book){
 
     // Author display
 
-    const listAuthor = document.createElement('li');
-    const authorText = document.createTextNode(book.author);
     listAuthor.appendChild(authorText);
-    
-    authorList = document.querySelector('#authorList');
     authorList.appendChild(listAuthor);
 
     // isbn Display
 
-    const isbn = document.createElement('li');
-    const isbnText = document.createTextNode(book.isbn);
     isbn.appendChild(isbnText);
-
-    isbnList = document.querySelector('#isbnList');
     isbnList.appendChild(isbn);
 }
 
@@ -130,17 +110,14 @@ function getData(){
     })
 }
 
-function newDeleteBook(bookTitle){
-    localStorage.removeItem(bookTitle);
-    location.reload();
-}
-
 function deleteBook(e){
     e.preventDefault();
     bookTitle = e.target.parentElement.dataValue;
     localStorage.removeItem(bookTitle);
     location.reload();
 }
+
+// Created this function to add auto sizing to my ui
 
 function pageDimensions(e){
 
@@ -160,6 +137,7 @@ function showAlert(type){
     successMessage = 'Saved your book!';
 
     if(type === 'error'){
+
         console.log('there was an error');
 
         newError = document.createElement('p');
@@ -167,17 +145,15 @@ function showAlert(type){
         newError.classList.add('error');
 
         cardSelect.insertBefore(newError, bookForm);
-
         sleep(3000).then(() => {document.querySelector('.error').remove()})
 
-        // bookForm
     }else if(type === 'success'){
+
         newSuccess = document.createElement('p');
         newSuccess.innerHTML = successMessage;
         newSuccess.classList.add('success');
 
         cardSelect.insertBefore(newSuccess, bookForm);
-
         sleep(3000).then(() => {document.querySelector('.success').remove()})
     }
 }
