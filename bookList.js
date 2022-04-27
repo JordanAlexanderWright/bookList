@@ -1,6 +1,7 @@
 // Selecting my form elements
 
 const nameField = document.querySelector('#nameField'),
+    bookForm = document.querySelector('#addBook'),
     authorField = document.querySelector('#authorField'),
     isbnField = document.querySelector('#isbnField'),
     submitBtn = document.querySelector('#submitButton'),
@@ -9,8 +10,6 @@ const nameField = document.querySelector('#nameField'),
     cardSelect = document.querySelector('.card');
 
 submitBtn.addEventListener('click', createBook);
-// deleteBtns.addEventListener('click', deleteBook);
-// deleteField.addEventListener('click', clearField);
 window.addEventListener('resize', pageDimensions);
 
 // Selecting my collection elements
@@ -25,7 +24,7 @@ const collectionTitles = document.querySelector('#collectionTitles'),
 let bookCollection = [];
 
 // Making an array of the fields to automate over
-let inputFields = [nameField, authorField, isbnField]
+let inputFields = [nameField, authorField, isbnField];
 
 class Book {
     constructor(name, author, isbn){
@@ -33,10 +32,6 @@ class Book {
         this.author = author;
         this.isbn = isbn;
     }
-}
-
-function clearField(e){
-    this.value = ''
 }
 
 function createBook(e){
@@ -47,7 +42,9 @@ function createBook(e){
     isbn = isbnField.value;
 
     if(isbn === '' || author === '' || name === ''){
-        console.log('Check input fields.')
+    
+        showAlert('error');
+
     } else {
         let someBook = new Book(name, author, isbn);
 
@@ -55,6 +52,7 @@ function createBook(e){
     
         saveData(someBook);
         displayBook(someBook);  
+        showAlert('success');
     }
 
 }
@@ -156,6 +154,37 @@ function pageDimensions(e){
     cardSelect.style.marginRight = `${margin}px`;
 
 }
+
+function showAlert(type){
+    errorMessage = 'Please ensure that all fields are filled';
+    successMessage = 'Saved your book!';
+
+    if(type === 'error'){
+        console.log('there was an error');
+
+        newError = document.createElement('p');
+        newError.innerHTML = errorMessage;
+        newError.classList.add('error');
+
+        cardSelect.insertBefore(newError, bookForm);
+
+        sleep(3000).then(() => {document.querySelector('.error').remove()})
+
+        // bookForm
+    }else if(type === 'success'){
+        newSuccess = document.createElement('p');
+        newSuccess.innerHTML = successMessage;
+        newSuccess.classList.add('success');
+
+        cardSelect.insertBefore(newSuccess, bookForm);
+
+        sleep(3000).then(() => {document.querySelector('.success').remove()})
+    }
+}
+
+const sleep = (milliseconds) => {
+    return new Promise(resolve => setTimeout(resolve, milliseconds))
+  }
 
 getData();
 pageDimensions();
